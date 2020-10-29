@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Currency Converter</title>
+</head>
+<body>
+    <div id="container">
+        <h1>Currency Converter</h1>
+
+        <form id="mainform" action="/check_valid" >            
+            <div>
+                <label for="convertFrom">Converting from: </label>
+                <input name="convertFrom" type="text" placeholder="Three letter currency code" 
+                value="{{request.args['convertFrom']}}">             
+            </div>
+            <div class="errorMsg">
+                {% block from_cur_error_warning %}
+                {% endblock %}
+            </div>
+
+            <div>
+                <label for="convertTo">Converting to: </label>
+                <input name="convertTo" type="text" placeholder="Three letter currency code" value="{{request.args['convertTo']}}">
+            </div>
+            <div class="errorMsg">
+                {% block to_cur_error_warning %}
+                {% endblock %}
+            </div>
+
+            <div>
+                <label for="amount">Amount: </label>
+                <input name="amount" type="number" min=0 step="any" placeholder="Number amount to convert" value="{{request.args['amount']}}">  
+            </div>
+            <div class="errorMsg">
+                {% block amt_error_warning %}
+                {% endblock %}
+            </div>
+
+            <button id="convertBtn">Convert</button>            
+        </form>
+        
+        {% block result %}
+        {% endblock %}
+        
+    </div>
+</body>
+</html>

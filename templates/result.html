@@ -1,0 +1,10 @@
+{% extends 'home.html' %}
+
+{% block result %}
+<div id="result">
+    <p id="from_amt">
+        {{from_cur_symb}}{{amt}} = {{to_cur_symb}}
+        <span id="convertedAmt">{{converted_amt}}</span>
+    </p>    
+</div>
+{% endblock %}
